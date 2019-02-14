@@ -1,5 +1,11 @@
+<link rel="stylesheet" type="text/css" href="/css/style.css">
+
 <nav>
-    <a href="/auth/login">LOGIN</a>
-    <a href="/auth/logout">LOGOUT</a>
+        <%if(user) {%>
+            <a href="/auth/logout">LOGOUT</a>
+            <%}else{ %>
+                <a href="/auth/login">LOGIN</a>
+           <%}%>
     <a href="/">HOMEPAGE</a>
+    <a href="/profile">PROFILE</a>
 </nav>
