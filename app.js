@@ -4,6 +4,9 @@ const passportSetup=require("./config/passport-setup");
 const passport=require("passport");
 const cookieSession=require("cookie-session");
 const profileroutes = require("./routes/profile-routes");
+const postroutes = require("./routes/post-routes");
+
+
 const mongo=require("mongoose");
 const keys=require("./config/keys");
 const app=express();
@@ -21,11 +24,15 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 //--------
-mongo.connect(keys.mongodb.url,()=> {
+mongo.connect(keys.mongodb.url,(e)=> {
+    if(e)
+    console.log(e);
+    else 
     console.log("connected to db");
 });
 app.use("/auth",authroutes);
 app.use("/profile",profileroutes);
+app.use("/post",postroutes);
 app.get("/",(req,res)=> {
     res.render('home',{user:req.user});
 })

@@ -7,5 +7,15 @@
     
     <%include ./partials.ejs %>
     <h1>Welcome to your profile page of <%=user.username%></h1>
+    <form method="POST" action="/post/save">
+        <input name="username"  value="<%=user.username%>" hidden> </input>
+        <br>
+        <label for="post">Write a post:</label>
+       <br>
+
+        <textarea name="post" id="post" cols="30" rows="10"></textarea>
+        <button type="submit" >POST</button>
+    </form>
+    
 </body>
 </html>
