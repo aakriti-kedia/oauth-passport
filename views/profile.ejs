@@ -6,9 +6,9 @@
 <body>
     
     <%include ./partials.ejs %>
-    <h1>Welcome to your profile page of <%=user.username%></h1>
+    <h1>Welcome to your profile page of <%=user%></h1>
     <form method="POST" action="/post/save">
-        <input name="username"  value="<%=user.username%>" hidden> </input>
+        <input name="username"  value="<%=user%>" hidden> </input>
         <br>
         <label for="post">Write a post:</label>
        <br>
@@ -16,6 +16,14 @@
         <textarea name="post" id="post" cols="30" rows="10"></textarea>
         <button type="submit" >POST</button>
     </form>
-    
+    <div>
+        <%posts.forEach((post)=> {%>
+            <ul>
+                <li><b><%=post.username%>:</b>
+                <%=post.post%></li>
+            </ul>
+
+        <%})%>
+    </div>
 </body>
 </html>
