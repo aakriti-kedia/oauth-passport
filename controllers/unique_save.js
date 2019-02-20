@@ -1,7 +1,7 @@
 const User=require("../models/user-model");
-module.exports = unique_save = (profile,done) => {
+module.exports = unique_save = (id,name,done) => {
     User.findOne({
-        googleId:profile.id
+        googleId:id
     }).then((currentuser)=>{
         if(currentuser)
         {
@@ -11,8 +11,8 @@ module.exports = unique_save = (profile,done) => {
         else 
         {
             new User({
-                username:profile.displayName,
-                googleId:profile.id
+                username:name,
+                googleId:id
             }).save().then((newuser)=>{
                 console.log("data saved successfully "+newuser);
                 done(null,newuser);

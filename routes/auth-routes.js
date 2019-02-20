@@ -23,4 +23,10 @@ router.get("/facebook/redirect",passport.authenticate('facebook'),(req,res)=>{
     console.log("req in fb redirect"+req.user);
     res.redirect('/profile');
 });
+router.get("/github",passport.authenticate('github'));
+router.get("/github/redirect",passport.authenticate('github'),(req,res)=>{
+    console.log("req in github redirect"+req.user);
+    res.redirect('/profile');
+});
+
 module.exports=router;
